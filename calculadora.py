@@ -1,65 +1,47 @@
-def mmc(n,n2)
-    n = int(input("primeiro número do MMC: "))
-    n2 = int(input("Segundo número do mmc"))
+def mmc(n, n2):
 
-    if n > n2:
-        num = n
+    minimo = False
+
+    # Determina qual o menor e o maior número, pois o cálculo dos múltiplos ocorre em torno no menor número
+    if n < n2:
+        menor = n
+        maior = n2
     else:
-        num = n2
-        
-        
-    cont = 0
+        menor = n2
+        maior = n
 
-    while n != 1 and n2 != 1:
-        
-        # For para pegar todos os números do intervalo
-        for i in range(1,num + 1):
-            
-            # For para testar cada número do intervalo
-            for a in range(1,i + 1):
-                
-                if a % 2 == 0:
-                    cont += 1
+    i = 1 # Inicialização da variável de contagem
 
-            # Se o número for primo, realizaremos as divisões
-            if cont == 2:
-                
-                # Se os dois forem divisíveis por i
-                if n % i and n2 % 1 == 0:
-                    n = n / i
-                    n2 = n2 / i
-                    cont = 0 
-                    
-                # Se só o n for divisível
-                elif n % i == 0 and n2 % i != 0:
-                    n = n / i
-                    cont = 0
-                
-                # Se só o n2 for divisível
-                elif n2 % 1 == 0 and n1 % 1 != 0:
-                    n2 = n2 / i
-                    cont = 0
-                else:
-                    cont = 0
-                    pass
-            else:
-                cont = 0        
+    # Enquanto o mínimo não tiver sido encontrado, ele continuará procurando
+    while not minimo:
+        a = menor * i
+
+        # O primeiro múltiplo do menor que compuser uma divisão exata com o maior será o MMC
+        if a % maior == 0:
+            minimo = a
+
+        i += 1
+
+    return minimo
+
 
 var = input("Digite a variável que você precisa saber: ")
 
 if var == "f" or var == "F":
     p = float(input("Insira o valor de p: "))
     plinha = float(input("Insira o valor de p': "))
-    
+
     if p == plinha:
         numerador = 1 + 1
         denominador = plinha
-        fracao = [numerador,denominador]
-        
+        # Invertendo os valores, já que após a regra de três numerador e denominador são trocados entre si
+        fracao = {'numerador': denominador, 'denominador': numerador}
     else:
-        
-            
-                   
+        denominador = mmc(p, plinha)
+        numerador = (denominador / plinha) + (denominador / p)
+        f = denominador / numerador
+
+
 elif var == "p" or var == "P":
     
     f = float(input("Insira o valor de f: "))
