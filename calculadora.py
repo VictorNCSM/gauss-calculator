@@ -1,8 +1,4 @@
 def mmc(n, n2):
-
-    minimo = False
-
-    # Determina qual o menor e o maior número, pois o cálculo dos múltiplos ocorre em torno do menor número
     if n < n2:
         menor = n
         maior = n2
@@ -10,13 +6,13 @@ def mmc(n, n2):
         menor = n2
         maior = n
 
-    i = 1 # Inicialização da variável de contagem
+    i = 1
+    minimo = False
 
-    # Enquanto o mínimo não tiver sido encontrado, ele continuará procurando
     while not minimo:
         a = menor * i
 
-        # O primeiro múltiplo do menor que compuser uma divisão exata com o maior será o MMC
+
         if a % maior == 0:
             minimo = a
 
@@ -24,8 +20,16 @@ def mmc(n, n2):
 
     return minimo
 
-var = input("Digite a variável que você precisa saber: ")
+def valid(string):
+    try:
+        if string == '0':
+            return True
+        return True
+    except:
+        return False
 
+
+var = input("Digite a variável que você precisa saber: ")
 valido = ["f", "F", "p", "P", "p'", "P'"]
 passagem = var in valido
 
@@ -40,9 +44,18 @@ while not passagem:
 
 
 if var == "f" or var == "F":
-    p = float(input("Insira o valor de p: "))
-    plinha = float(input("Insira o valor de p': "))
+    p = input("Insira o valor de p: ")
+    plinha = input("Insira o valor de p': ")
     print("=========================================================================")
+
+    while not valid(p) or valid(plinha):
+        print("Os valores que você inseriu estão incorretos. Por gentileza, insira valores numéricos.")
+        p = input("Digite o valor de p: ")
+        plinha = input("Digite o valor de p': ")
+    else:
+        p = float(p)
+        plinha = float(plinha)
+
 
     if p == plinha:
         numerador = 2
@@ -50,6 +63,17 @@ if var == "f" or var == "F":
 
         # Invertendo os valores, já que após a regra de três numerador e denominador são trocados entre si
         f = denominador / numerador
+
+        print(f"\nO valor de f é igual a: {f}")
+
+    elif p == 0 or plinha == 0:
+
+        if p == 0 and plinha == 0:
+            f = plinha
+        elif p == 0:
+            f = 0
+        else:
+            f = p
 
         print(f"\nO valor de f é igual a: {f}")
     else:
@@ -61,13 +85,36 @@ if var == "f" or var == "F":
 
 elif var == "p" or var == "P":
 
-    f = float(input("Insira o valor de f: "))
-    plinha = float(input("Insira o valor de p': "))
+    f = input("Insira o valor de f: ")
+    plinha = input("Insira o valor de p': ")
     print("=========================================================================")
 
-    if f == plinha:
+    while not valid(f) or valid(plinha):
+        print("Os valores que você inseriu estão incorretos. Por gentileza, insira valores numéricos.")
+        f = input("Digite o valor de f: ")
+        plinha = input("Digite o valor de p': ")
+    else:
+        f = float(f)
+        plinha = float(plinha)
+
+
+
+    if f == 0 or plinha == 0:
+
+
+        if f == 0 and plinha == 0:
+            p == 0
+        elif f == 0:
+            p = plinha - (plinha * 2)
+        else:
+            p = f
+
+        print(f"\nO valor de p é igual a: {p}")
+    elif f == plinha:
+
         p = 0
         print(f"\nO valor de p é igual a: {p}")
+
     else:
         denominador = mmc(f, plinha)
         numerador = (denominador / f) - (denominador / plinha)
@@ -76,11 +123,28 @@ elif var == "p" or var == "P":
         print(f"\nO valor de p é igual a: {p}")
 
 elif var == "p'" or var == "P'":
-    f = float(input("Insira o valor de f: "))
-    p = float(input("Insira o valor de p: "))
+    f = input("Insira o valor de f: ")
+    p = input("Insira o valor de p: ")
     print("=========================================================================")
 
-    if f == p:
+    while not valid(f) or valid(p):
+        print("Os valores que você inseriu estão incorretos. Por gentileza, insira valores numéricos.")
+        f = input("Digite o valor de f: ")
+        p = input("Digite o valor de p: ")
+    else:
+        f = float(f)
+        p = float(p)
+
+
+    if p == 0 or f == 0:
+        if p == 0 and f == 0:
+            plinha = 0
+        elif p == 0:
+            plinha = f
+        else:
+            plinha = p - (p * 2)
+
+    elif f == p:
         plinha = 0
         print(f"\nO valor de p' é igual a: {plinha}")
     else:
