@@ -33,7 +33,7 @@ def valid(string):
         return False
 
 
-string = ["Aqui vai a mensagem número 1","Aqui vai a mensagem número 2"]
+string = ["Convexo\n\nAs suas vantagens: Ele amplia o campo de visão, por isso é usado por motoristas de ônibus; ele dá mais visão, porém a imagem é pequena.\n\nCôncavo\n\nDeixa a imagem maior, e dependendo da distância podemos ver a imagem invertida.","Aqui vai a mensagem número 2"]
 
 
 var = input("Digite a variável que você precisa saber: ")
@@ -45,7 +45,7 @@ while not passagem:
     print('Caso queira saber o valor de f, insira "f" ou "F" (sem aspas) para que possamos coletar;')
     print('Caso queira saber o valor de p, insira "p" ou "P" (sem aspas) para que possamos coletar;')
     print('E por fim, caso queira saber o valor de p\', insira "p\'" ou "P\'" (sem aspas) para que possamos coletar.')
-    print("===================================================================================================================== \n")
+    print("=========================================================================\n")
     var = input("Digite a variável que você precisa saber: ")
     passagem = var in valido
 
@@ -55,7 +55,7 @@ if var == "f" or var == "F":
     plinha = input("Insira o valor de p': ")
     print("=========================================================================\n")
 
-    while not valid(p) or valid(plinha):
+    while valid(p) == False or valid(plinha) == False:
         print("Os valores que você inseriu estão incorretos. Por gentileza, insira valores numéricos.")
         p = input("Digite o valor de p: ")
         plinha = input("Digite o valor de p': ")
@@ -72,9 +72,10 @@ if var == "f" or var == "F":
         # Invertendo os valores, já que após a regra de três numerador e denominador são trocados entre si
         f = denominador / numerador
 
-        print(f"\nO valor de f é igual a: {f}")
-        print("\n=============================================================================================")
+        print(f"O valor de f é igual a: {f}")
+        print("=========================================================================\n")
         print("\n", string[randint(0,7)])
+        input()
 
     elif p == 0 or plinha == 0:
 
@@ -85,25 +86,28 @@ if var == "f" or var == "F":
         else:
             f = p
 
-        print(f"\nO valor de f é igual a: {f}")
-        print("\n=============================================================================================")
+        print(f"O valor de f é igual a: {f}")
+        print("=========================================================================\n")
         print("\n", string[randint(0, 7)])
+        input()
+        
     else:
         denominador = mmc(p, plinha)
         numerador = (denominador / plinha) + (denominador / p)
         f = denominador / numerador
 
-        print(f"\nO valor de f é igual a: {f}")
-        print("\n=============================================================================================")
+        print(f"O valor de f é igual a: {f}")
+        print("=========================================================================\n")
         print("\n", string[randint(0, 7)])
+        input()
 
 elif var == "p" or var == "P":
 
     f = input("Insira o valor de f: ")
     plinha = input("Insira o valor de p': ")
-    print("=========================================================================")
+    print("=========================================================================\n")
 
-    while not valid(f) or valid(plinha):
+    while valid(f) == False or valid(plinha) == False:
         print("Os valores que você inseriu estão incorretos. Por gentileza, insira valores numéricos.")
         f = input("Digite o valor de f: ")
         plinha = input("Digite o valor de p': ")
@@ -123,31 +127,35 @@ elif var == "p" or var == "P":
         else:
             p = f
 
-        print(f"\nO valor de p é igual a: {p}")
-        print("\n=============================================================================================")
+        print(f"O valor de p é igual a: {p}")
+        print("=========================================================================\n")
         print("\n", string[randint(0, 7)])
+        input()
+        
     elif f == plinha:
 
         p = 0
-        print(f"\nO valor de p é igual a: {p}")
-        print("\n=============================================================================================")
+        print(f"O valor de p é igual a: {p}")
+        print("=========================================================================\n")
         print("\n", string[randint(0, 7)])
+        input()
 
     else:
         denominador = mmc(f, plinha)
         numerador = (denominador / f) - (denominador / plinha)
         p = denominador / numerador
 
-        print(f"\nO valor de p é igual a: {p}")
+        print(f"O valor de p é igual a: {p}")
         print("\n=============================================================================================")
         print("\n", string[randint(0, 7)])
+        input()
 
 elif var == "p'" or var == "P'":
     f = input("Insira o valor de f: ")
     p = input("Insira o valor de p: ")
     print("=========================================================================\n")
 
-    while not valid(f) or valid(p):
+    while valid(f) == False or valid(p) == False:
         print("Os valores que você inseriu estão incorretos. Por gentileza, insira valores numéricos.")
         f = input("Digite o valor de f: ")
         p = input("Digite o valor de p: ")
@@ -166,16 +174,20 @@ elif var == "p'" or var == "P'":
 
     elif f == p:
         plinha = 0
-        print(f"\nO valor de p' é igual a: {plinha}")
+        print(f"O valor de p' é igual a: {plinha}")
         print("\n=============================================================================================")
         print("\n", string[randint(0, 7)])
+        input()
+        
     else:
         denominador = mmc(f, p)
         numerador = (denominador / f) - (denominador / p)
         plinha = denominador / numerador
-        print(f"\nO valor de p' é igual a: {plinha}")
+        
+        print(f"O valor de p' é igual a: {plinha}")
         print("\n=============================================================================================")
         print("\n", string[randint(0, 7)])
+        input()
 
 else:
     pass
