@@ -33,7 +33,7 @@ def valid(string):
         return False
 
 
-string = ["Convexo\n\nAs suas vantagens: Ele amplia o campo de visão, por isso é usado por motoristas de ônibus; ele dá mais visão, porém a imagem é pequena.\n\nCôncavo\n\nDeixa a imagem maior, e dependendo da distância podemos ver a imagem invertida.","Aqui vai a mensagem número 2"]
+string = ["\nVocê sabia?\n\nEspelho convexo\nAs suas vantagens: Ele amplia o campo de visão, por isso é usado por motoristas de ônibus; ele dá mais visão, porém a imagem é pequena.\n===============================================================================================================\nEspelho côncavo:\nDeixa a imagem maior, e dependendo da distância podemos ver a imagem invertida.\n","\nVocê sabia? \n\nOs raios notáveis descritos são um artifício que facilita a determinação das características da imagem conjugada pelo espelho côncavo. Seu uso deve-se ao fato de que quaisquer raios de luz que incidam em superfícies refletoras côncavas serão refletidos assim como os raios notáveis o são.","\nVocê sabia?\n\n "]
 
 
 var = input("Digite a variável que você precisa saber: ")
@@ -63,21 +63,9 @@ if var == "f" or var == "F":
     else:
         p = float(p)
         plinha = float(plinha)
+        
 
-
-    if p == plinha:
-        numerador = 2
-        denominador = plinha
-
-        # Invertendo os valores, já que após a regra de três numerador e denominador são trocados entre si
-        f = denominador / numerador
-
-        print(f"O valor de f é igual a: {f}")
-        print("=========================================================================\n")
-        print("\n", string[randint(0,7)])
-        input()
-
-    elif p == 0 or plinha == 0:
+    if p == 0 or plinha == 0:
 
         if p == 0 and plinha == 0:
             f = plinha
@@ -88,8 +76,21 @@ if var == "f" or var == "F":
 
         print(f"O valor de f é igual a: {f}")
         print("=========================================================================\n")
-        print("\n", string[randint(0, 7)])
-        input()
+        print("\n", string[randint(0, 2)])
+        input("Pressione qualquer tecla para sair.")
+        
+        
+    elif p == plinha:
+        numerador = 2
+        denominador = plinha
+
+        # Invertendo os valores, já que após a regra de três numerador e denominador são trocados entre si
+        f = denominador / numerador
+
+        print(f"O valor de f é igual a: {f}")
+        print("=========================================================================\n")
+        print("\n", string[randint(0,2)])
+        input("Pressione qualquer tecla para sair.")
         
     else:
         denominador = mmc(p, plinha)
@@ -98,8 +99,8 @@ if var == "f" or var == "F":
 
         print(f"O valor de f é igual a: {f}")
         print("=========================================================================\n")
-        print("\n", string[randint(0, 7)])
-        input()
+        print("\n", string[randint(0, 2)])
+        input("Pressione qualquer tecla para sair.")
 
 elif var == "p" or var == "P":
 
@@ -129,16 +130,16 @@ elif var == "p" or var == "P":
 
         print(f"O valor de p é igual a: {p}")
         print("=========================================================================\n")
-        print("\n", string[randint(0, 7)])
-        input()
+        print("\n", string[randint(0, 2)])
+        input("Pressione qualquer tecla para sair.")
         
     elif f == plinha:
 
         p = 0
         print(f"O valor de p é igual a: {p}")
         print("=========================================================================\n")
-        print("\n", string[randint(0, 7)])
-        input()
+        print("\n", string[randint(0, 2)])
+        input("Pressione qualquer tecla para sair.")
 
     else:
         denominador = mmc(f, plinha)
@@ -147,8 +148,8 @@ elif var == "p" or var == "P":
 
         print(f"O valor de p é igual a: {p}")
         print("\n=============================================================================================")
-        print("\n", string[randint(0, 7)])
-        input()
+        print("\n", string[randint(0, 2)])
+        input("Pressione qualquer tecla para sair.")
 
 elif var == "p'" or var == "P'":
     f = input("Insira o valor de f: ")
@@ -171,13 +172,18 @@ elif var == "p'" or var == "P'":
             plinha = f
         else:
             plinha = p - (p * 2)
+            
+        print(f"O valor de p' é igual a: {plinha}")
+        print("=========================================================================\n")
+        print("\n", string[randint(0, 2)])
+        input("Pressione qualquer tecla para sair.")
 
     elif f == p:
         plinha = 0
         print(f"O valor de p' é igual a: {plinha}")
         print("\n=============================================================================================")
-        print("\n", string[randint(0, 7)])
-        input()
+        print("\n", string[randint(0, 2)])
+        input("Pressione qualquer tecla para sair.")
         
     else:
         denominador = mmc(f, p)
@@ -186,8 +192,8 @@ elif var == "p'" or var == "P'":
         
         print(f"O valor de p' é igual a: {plinha}")
         print("\n=============================================================================================")
-        print("\n", string[randint(0, 7)])
-        input()
+        print("\n", string[randint(0, 2)])
+        input("Pressione qualquer tecla para sair.")
 
 else:
     pass
